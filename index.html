@@ -1,1 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Head-Tilt Flappy Bird 🦅📐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
+  <!-- MediaPipe Face Mesh & Camera Utils via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Banner -->
+    <header class="app-header">
+      <div class="title-group">
+        <h1>HEAD-TILT FLAPPY BIRD</h1>
+        <p class="subtitle">Tilt head <strong>LEFT</strong> ➔ Fly Up 🚀 | Tilt head <strong>RIGHT</strong> ➔ Fly Down 🔻</p>
+      </div>
+      <div class="header-badges">
+        <span class="badge warning-badge">⚠️ Warning: High Chiropractic Risk</span>
+        <span class="badge fun-badge">🦴 Neck-Snaps: <span id="neckSnapCounter">0</span></span>
+      </div>
+    </header>
+
+    <!-- Main Game & Tracking Grid -->
+    <main class="game-layout">
+      <!-- Left Column: Game Canvas Viewport -->
+      <section class="game-column">
+        <div class="canvas-wrapper">
+          <canvas id="gameCanvas" width="400" height="600"></canvas>
+
+          <!-- On-Canvas Overlays -->
+          <div id="startOverlay" class="screen-overlay">
+            <div class="overlay-card">
+              <div class="mascot-icon">🦅</div>
+              <h2>READY TO SNAP?</h2>
+              <p class="instruction-text">
+                Tilt your head <strong>LEFT</strong> to flap upward.<br>
+                Tilt your head <strong>RIGHT</strong> to dive.<br>
+                Keep it level to glide!
+              </p>
+              <div class="start-btn-group">
+                <button id="btnStartGame" class="btn btn-primary btn-pulse">START GAME</button>
+                <button id="btnCalibrateHero" class="btn btn-secondary">🎯 Calibrate Rest Pose</button>
+              </div>
+              <div class="camera-status-pill" id="cameraStatusHero">
+                <span class="status-dot pulsing"></span>
+                <span id="cameraStatusHeroText">Waiting for Camera...</span>
+              </div>
+              <p class="fallback-hint">No camera? Press <strong>A / D</strong> or <strong>← / →</strong> to tilt manually!</p>
+            </div>
+          </div>
+
+          <div id="gameOverOverlay" class="screen-overlay hidden">
+            <div class="overlay-card">
+              <h2 class="gameover-title">GAME OVER</h2>
+              <div class="score-summary-board">
+                <div class="score-box">
+                  <span class="label">SCORE</span>
+                  <span class="val" id="finalScore">0</span>
+                </div>
+                <div class="score-box">
+                  <span class="label">BEST</span>
+                  <span class="val" id="bestScore">0</span>
+                </div>
+                <div class="score-box highlight">
+                  <span class="label">MEDAL</span>
+                  <span class="val" id="medalEarned">🥉 Bronze</span>
+                </div>
+                <div class="score-box">
+                  <span class="label">NECK SNAPS</span>
+                  <span class="val" id="finalSnaps">0</span>
+                </div>
+              </div>
+              <div class="chiro-diagnosis" id="chiroDiagnosis">
+                "Diagnosis: Moderate cervical spine agility."
+              </div>
+              <button id="btnRestartGame" class="btn btn-primary btn-pulse">PLAY AGAIN (SPACE)</button>
+            </div>
+          </div>
+
+          <!-- In-Game Tilt Direction Indicator -->
+          <div id="flightVectorIndicator" class="flight-hud-pill">
+            <span id="flightArrow">⏸️</span>
+            <span id="flightActionText">LEVEL (GLIDE)</span>
+            <span id="flightAngleDegrees">0°</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Webcam Feed HUD & Neck-O-Meter & Settings -->
+      <section class="hud-column">
+        <!-- Live Camera & Landmark PIP -->
+        <div class="card hud-card">
+          <div class="card-header">
+            <h3>👁️ EYE-TILT TRACKER</h3>
+            <span class="cam-fps" id="fpsDisplay">-- FPS</span>
+          </div>
+
+          <div class="video-container">
+            <!-- Hidden raw video element -->
+            <video id="webcamVideo" playsinline muted></video>
+            <!-- Canvas displaying video with eye landmark connection line and spirit level -->
+            <canvas id="trackerCanvas" width="320" height="240"></canvas>
+            <div class="horizon-crosshair"></div>
+          </div>
+
+          <div class="tracker-controls">
+            <button id="btnCalibrate" class="btn btn-sm btn-action">
+              🎯 Calibrate Zero Angle
+            </button>
+            <button id="btnToggleCamera" class="btn btn-sm btn-outline">
+              🔄 Switch/Restart Cam
+            </button>
+          </div>
+        </div>
+
+        <!-- Neck-O-Meter Gauge -->
+        <div class="card neck-meter-card">
+          <div class="card-header">
+            <h3>📐 NECK-O-METER</h3>
+            <span class="status-tag" id="neckStatusTag">NORMAL</span>
+          </div>
+
+          <!-- Visual Spirit Gauge -->
+          <div class="spirit-level">
+            <div class="level-marker left-marker">FLY UP 🚀</div>
+            <div class="level-track">
+              <div class="level-center-line"></div>
+              <div id="levelBubble" class="level-bubble"></div>
+            </div>
+            <div class="level-marker right-marker">🔻 DIVE</div>
+          </div>
+
+          <div class="gauge-stats">
+            <div class="gauge-stat">
+              <span class="stat-label">Raw Angle</span>
+              <span class="stat-value" id="statRawAngle">0.0°</span>
+            </div>
+            <div class="gauge-stat">
+              <span class="stat-label">Calibrated Angle</span>
+              <span class="stat-value highlighted" id="statCalibratedAngle">0.0°</span>
+            </div>
+            <div class="gauge-stat">
+              <span class="stat-label">Angular Speed</span>
+              <span class="stat-value" id="statAngularSpeed">0°/s</span>
+            </div>
+          </div>
+
+          <div class="neck-humor" id="neckHumorText">
+            "Keep your neck loose. Your chiropractor thanks you in advance."
+          </div>
+        </div>
+
+        <!-- Controls & Calibration Settings -->
+        <div class="card settings-card">
+          <div class="card-header">
+            <h3>⚙️ TILT SETTINGS</h3>
+            <button id="btnResetSettings" class="btn-text">Reset Defaults</button>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label for="sliderSpeed">Bird & Game Speed</label>
+              <span id="valSpeed" class="setting-val">1.0x (Brisk)</span>
+            </div>
+            <input type="range" id="sliderSpeed" min="0.6" max="2.2" step="0.1" value="1.0">
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label for="sliderSensitivity">Tilt Sensitivity</label>
+              <span id="valSensitivity" class="setting-val">1.0x</span>
+            </div>
+            <input type="range" id="sliderSensitivity" min="0.4" max="2.5" step="0.1" value="1.0">
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label for="sliderDeadzone">Neutral Deadzone</label>
+              <span id="valDeadzone" class="setting-val">3.0°</span>
+            </div>
+            <input type="range" id="sliderDeadzone" min="1.0" max="8.0" step="0.5" value="3.0">
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label for="selectControlMode">Control Physics</label>
+            </div>
+            <select id="selectControlMode" class="custom-select">
+              <option value="velocity" selected>Velocity Lift (Flappy Dynamic)</option>
+              <option value="direct">Direct Altitude (Follows Angle)</option>
+            </select>
+          </div>
+
+          <div class="setting-checkboxes">
+            <label class="checkbox-label">
+              <input type="checkbox" id="checkInvertTilt">
+              <span>Invert Tilt (Right = Up, Left = Down)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="checkAudio" checked>
+              <span>Sound Effects & 8-Bit Synth 🔊</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="checkNeckSnaps" checked>
+              <span>Neck-Snap Sound FX 🦴</span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer with Tips -->
+    <footer class="app-footer">
+      <p>Tip: Sit centered facing your webcam. If you tilt your head left, the bird will immediately gain altitude. Quick neck snaps allow quick obstacle clearing!</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

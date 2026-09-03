@@ -1,13 +1,15 @@
 <img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
+# Head-Tilt Flappy Bird 🦅📐
 
+> A classic Flappy Bird clone, but your bird's altitude is controlled strictly by how far you tilt your head left or right. 
+> 
+> **The Joke:** Watching someone aggressively snap their neck back and forth just to dodge a green pipe.
 
-# [Project Name] 🎯
-
+---
 
 ## Basic Details
-### Team Name: [Name]
-
+### Team Name: [Add Your Team Name]
 
 ### Team Members
 - Team Lead: [Name] - [College]
@@ -15,89 +17,66 @@
 - Member 3: [Name] - [College]
 
 ### Project Description
-[2-3 lines about what your project does]
+A hilarious computer-vision webcam game where real-time facial landmark tracking computes the angle between your eyes. Tilting your head left generates upward lift, tilting right dives, and rapid neck snaps trigger comedic chiropractic warnings and sound effects!
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Tapping a screen or pressing a spacebar to play Flappy Bird is far too convenient, comfortable, and risk-free. Modern humans have far too little strain on their sternocleidomastoid muscles and look far too dignified sitting at their desks.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
-
-## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
-For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
-
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+Remove all keyboard and touch inputs. Force the player to violently jerk and snap their head side to side at 60 FPS in front of their webcam to navigate through retro green pipes. Includes a real-time "Neck-O-Meter", a cervical whiplash detector, and synthesized 8-bit sound effects.
 
 ---
+
+## Technical Details
+
+### Technologies Used
+- **Frontend / Graphics:** HTML5 Canvas 2D engine (60 FPS, procedural retro pipes, parallax scrolling skyline & clouds)
+- **Computer Vision & Tracking:** MediaPipe Face Mesh running client-side at 60 FPS (eye landmark angle calculation with zero latency)
+- **Audio Synthesizer:** Web Audio API (100% code-synthesized 8-bit sounds for flaps, score chimes, collisions, and neck snaps)
+- **Styling:** CSS3 retro arcade neon styling with responsive glassmorphism HUD
+
+---
+
+## 🎮 How It Works
+
+1. **Eye Landmark Angle Calculation:**
+   Tracks facial landmarks in real time and calculates the angle vector between your eyes:
+   $$\theta = \operatorname{atan2}(y_{\text{right}} - y_{\text{left}}, x_{\text{right}} - x_{\text{left}}) \times \frac{180}{\pi}$$
+
+2. **Flight Controls:**
+   - **Tilt Head Left (ear to left shoulder):** Upward lift 🚀 — instant upward impulse, flaps wings, and ascends.
+   - **Tilt Head Right (ear to right shoulder):** Dive 🔻 — tucks wings and plunges downward.
+   - **Level Pose:** Glide ⏸️ — gentle neutral sink.
+
+3. **Neck-O-Meter & Neck Snap Counter:**
+   - Live spirit-level bubble gauge showing calibrated degrees of tilt.
+   - Angular velocity detection triggers cartoon pops and bonus "Neck Snaps" when violently flicking your head.
+   - Post-game comedic chiropractic diagnosis.
+
+4. **Keyboard Fallback (for testing without camera):**
+   - Press **A** / **←** to tilt Left.
+   - Press **D** / **→** to tilt Right.
+   - Press **Spacebar** to Start / Restart.
+
+---
+
+## 🚀 How to Run
+
+Because the webcam uses modern browser security (`getUserMedia`), run it over `http://localhost` or `https://`:
+
+### Option 1: Double-Click
+Double-click `run.bat` to launch the local server and open your browser automatically.
+
+### Option 2: Command Line
+```powershell
+# From the project folder:
+python -m http.server 8080
+```
+Then open **http://localhost:8080** in your browser.
+
+---
+
 Made with ❤️ at TinkerHub Useless Projects 
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
 ![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
-
-
-
