@@ -48,17 +48,6 @@ For Software:
 * **Libraries used:** MediaPipe Face Mesh & Camera Utils (via CDN)
 * **Tools used:** VS Code, Git, GitHub, HTML5 Canvas 2D API, Web Audio API
 
-<<<<<<< HEAD
-### Implementation
-
-For Software:
-
-# Installation
-
-```bash
-git clone https://github.com/archarnair/useless_project_temp.git
-cd useless_project_temp
-=======
 1. **Eye Landmark Angle Calculation:**
    Tracks facial landmarks in real time and calculates the angle vector between your eyes:
     θ = atan2(y_right - y_left, x_right - x_left) × 180/π
@@ -91,7 +80,6 @@ Double-click `run.bat` to launch the local server and open your browser automati
 ```powershell
 # From the project folder:
 python -m http.server 8080
->>>>>>> b2a3aadb9e8d0caeb3f5ad8130c15efb42e14522
 ```
 
 # Run
@@ -199,7 +187,7 @@ https://drive.google.com/file/d/11dyebl5QJqbwm-1mJBCY8qbaSVtVoYAW/view?usp=shari
 
 ## Team Contributions
 
-* **Archa Rajeev Nair:** Project ideation, Computer Vision integration (MediaPipe Face Mesh landmark tracking, angle vector computation), physics engine & game loop implementation.
+* **Archa Rajeev Nair:** Computer Vision integration (MediaPipe Face Mesh landmark tracking, angle vector computation), physics engine & game loop implementation.
 * **Vrinda Lakshmi:** UI/UX design, retro neon styling & spirit-level HUD, Web Audio API sound synthesis, chiropractic scoring & neck-snap mechanics.
 
 ---
