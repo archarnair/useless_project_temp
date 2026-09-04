@@ -187,7 +187,7 @@ https://drive.google.com/file/d/11dyebl5QJqbwm-1mJBCY8qbaSVtVoYAW/view?usp=shari
 
 ## Team Contributions
 
-* **Archa Rajeev Nair:** Computer Vision integration (MediaPipe Face Mesh landmark tracking, angle vector computation), physics engine & game loop implementation.
+* **Archa Rajeev Nair:** Game Design and Development: Implemented the core game loop, physics engine, procedural pipe generation, scoring system, and game state management.
 * **Vrinda Lakshmi:** UI/UX design, retro neon styling & spirit-level HUD, Web Audio API sound synthesis, chiropractic scoring & neck-snap mechanics.
 
 ---
