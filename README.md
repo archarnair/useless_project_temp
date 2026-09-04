@@ -40,7 +40,7 @@ Remove all keyboard and touch inputs. Force the player to violently jerk and sna
 
 1. **Eye Landmark Angle Calculation:**
    Tracks facial landmarks in real time and calculates the angle vector between your eyes:
-   $$\theta = \operatorname{atan2}(y_{\text{right}} - y_{\text{left}}, x_{\text{right}} - x_{\text{left}}) \times \frac{180}{\pi}$$
+   \theta = \text{atan2}(y_{\text{right}} - y_{\text{left}}, x_{\text{right}} - x_{\text{left}}) \times \frac{180}{\pi}
 
 2. **Flight Controls:**
    - **Tilt Head Left (ear to left shoulder):** Upward lift 🚀 — instant upward impulse, flaps wings, and ascends.
