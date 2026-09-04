@@ -40,19 +40,19 @@ Remove all keyboard and touch inputs. Force the player to violently jerk and sna
 
 1. **Eye Landmark Angle Calculation:**
    Tracks facial landmarks in real time and calculates the angle vector between your eyes:
-   \theta = \text{atan2}(y_{\text{right}} - y_{\text{left}}, x_{\text{right}} - x_{\text{left}}) \times \frac{180}{\pi}
+    θ = atan2(y_right - y_left, x_right - x_left) × 180/π
 
-2. **Flight Controls:**
+3. **Flight Controls:**
    - **Tilt Head Left (ear to left shoulder):** Upward lift 🚀 — instant upward impulse, flaps wings, and ascends.
    - **Tilt Head Right (ear to right shoulder):** Dive 🔻 — tucks wings and plunges downward.
    - **Level Pose:** Glide ⏸️ — gentle neutral sink.
 
-3. **Neck-O-Meter & Neck Snap Counter:**
+4. **Neck-O-Meter & Neck Snap Counter:**
    - Live spirit-level bubble gauge showing calibrated degrees of tilt.
    - Angular velocity detection triggers cartoon pops and bonus "Neck Snaps" when violently flicking your head.
    - Post-game comedic chiropractic diagnosis.
 
-4. **Keyboard Fallback (for testing without camera):**
+5. **Keyboard Fallback (for testing without camera):**
    - Press **A** / **←** to tilt Left.
    - Press **D** / **→** to tilt Right.
    - Press **Spacebar** to Start / Restart.
