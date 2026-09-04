@@ -9,12 +9,11 @@
 ---
 
 ## Basic Details
-### Team Name: [Add Your Team Name]
+### Team Name: [NEBULA]
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: [ARCHA R NAIR]
+- Member 2: [VRINDA LAKSHMI] 
 
 ### Project Description
 A hilarious computer-vision webcam game where real-time facial landmark tracking computes the angle between your eyes. Tilting your head left generates upward lift, tilting right dives, and rapid neck snaps trigger comedic chiropractic warnings and sound effects!
