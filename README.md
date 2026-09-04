@@ -3,6 +3,7 @@
 # Head-Tilt Flappy Bird 🦅📐
 
 ## Basic Details
+<<<<<<< HEAD
 
 ### Team Name: NEBULA
 
@@ -10,6 +11,13 @@
 
 * Member 1: Archa Rajeev Nair - MITS
 * Member 2: Vrinda Lakshmi - MITS
+=======
+### Team Name: NEBULA
+
+### Team Members
+- Member 1: ARCHA R NAIR
+- Member 2: VRINDA LAKSHMI 
+>>>>>>> b2a3aadb9e8d0caeb3f5ad8130c15efb42e14522
 
 ### Project Description
 
@@ -40,6 +48,7 @@ For Software:
 * **Libraries used:** MediaPipe Face Mesh & Camera Utils (via CDN)
 * **Tools used:** VS Code, Git, GitHub, HTML5 Canvas 2D API, Web Audio API
 
+<<<<<<< HEAD
 ### Implementation
 
 For Software:
@@ -49,6 +58,40 @@ For Software:
 ```bash
 git clone https://github.com/archarnair/useless_project_temp.git
 cd useless_project_temp
+=======
+1. **Eye Landmark Angle Calculation:**
+   Tracks facial landmarks in real time and calculates the angle vector between your eyes:
+    θ = atan2(y_right - y_left, x_right - x_left) × 180/π
+
+3. **Flight Controls:**
+   - **Tilt Head Left (ear to left shoulder):** Upward lift 🚀 — instant upward impulse, flaps wings, and ascends.
+   - **Tilt Head Right (ear to right shoulder):** Dive 🔻 — tucks wings and plunges downward.
+   - **Level Pose:** Glide ⏸️ — gentle neutral sink.
+
+4. **Neck-O-Meter & Neck Snap Counter:**
+   - Live spirit-level bubble gauge showing calibrated degrees of tilt.
+   - Angular velocity detection triggers cartoon pops and bonus "Neck Snaps" when violently flicking your head.
+   - Post-game comedic chiropractic diagnosis.
+
+5. **Keyboard Fallback (for testing without camera):**
+   - Press **A** / **←** to tilt Left.
+   - Press **D** / **→** to tilt Right.
+   - Press **Spacebar** to Start / Restart.
+
+---
+
+## 🚀 How to Run
+
+Because the webcam uses modern browser security (`getUserMedia`), run it over `http://localhost` or `https://archarnair.github.io/useless_project_temp/`:
+
+### Option 1: Double-Click
+Double-click `run.bat` to launch the local server and open your browser automatically.
+
+### Option 2: Command Line
+```powershell
+# From the project folder:
+python -m http.server 8080
+>>>>>>> b2a3aadb9e8d0caeb3f5ad8130c15efb42e14522
 ```
 
 # Run
