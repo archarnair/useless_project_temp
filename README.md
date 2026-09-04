@@ -102,21 +102,21 @@ Then visit `http://localhost:8080` in your browser.
 
 ### Screenshots (Add at least 3)
 
-![Game Start & Tracking Screen](c:\Users\USER\Downloads\fb1.jpg)
+![Game Start & Tracking Screen](./images/fb1.jpg)
 
 *The neon arcade interface featuring live webcam facial tracking, calibration HUD, sensitivity controls, and chiropractic risk warnings.*
 
-![Gameplay with Head-Tilt Controls](c:\Users\USER\Downloads\fb2.jpg)
+![Gameplay with Head-Tilt Controls](./images/fb2.jpg)
 
 *Player frantically tilting their head left and right to navigate through procedurally generated pipes while the live spirit-level Neck-O-Meter calculates tilt angle in real time.*
 
-![Game Over & Chiropractic Diagnosis](c:\Users\USER\Downloads\fb3.jpg)
+![Game Over & Chiropractic Diagnosis](./images/fb3.jpg)
 
 *The final comedic diagnosis screen revealing player score, best score, total neck snaps, and an absurd orthopedic assessment.*
 
 # Diagrams
 
-![Workflow](c:\Users\USER\Downloads\wf.jpg)
+![Workflow](./images/wf.jpg)
 
 *The workflow begins with webcam initialization, tracking facial eye landmarks with MediaPipe Face Mesh, calculating the tilt angle vector, updating the spirit-level Neck-O-Meter, and converting lateral head movement into flight physics and neck-snap diagnostics.*
 
@@ -212,3 +212,7 @@ Made with ❤️ at TinkerHub Useless Projects
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
 ![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
+![Game Start & Tracking Screen](images/fb1.jpg)
+![Gameplay with Head-Tilt Controls](images/fb2.jpg)
+![Game Over & Chiropractic Diagnosis](images/fb3.jpg)
+![Workflow](images/wf.jpg)
