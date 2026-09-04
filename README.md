@@ -61,7 +61,7 @@ Remove all keyboard and touch inputs. Force the player to violently jerk and sna
 
 ## 🚀 How to Run
 
-Because the webcam uses modern browser security (`getUserMedia`), run it over `http://localhost` or `https://`:
+Because the webcam uses modern browser security (`getUserMedia`), run it over `http://localhost` or `https://archarnair.github.io/useless_project_temp/`:
 
 ### Option 1: Double-Click
 Double-click `run.bat` to launch the local server and open your browser automatically.
